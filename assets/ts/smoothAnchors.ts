@@ -21,6 +21,17 @@ function setupSmoothAnchors() {
         aElement.addEventListener("click", clickEvent => {
             clickEvent.preventDefault();
 
+            // Check if the href is "#" Back to top
+            if (href === "#") {
+                // Scroll to the top of the page
+                scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+                window.history.pushState({}, "", "#");
+                return;
+            }
+
             const targetId = decodeURI(aElement.getAttribute("href").substring(1)),
                 target = document.getElementById(targetId) as HTMLElement,
                 offset = target.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top;
