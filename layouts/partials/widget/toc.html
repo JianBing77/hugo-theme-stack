@@ -9,4 +9,9 @@
             {{ .Context.TableOfContents }}
         </div>
     </section>
+
+    {{ $topImg := resources.Get ("icons/top.svg") }}
+    <a id="back-to-top" href="#">
+        <img src="{{ $topImg.RelPermalink }}" />
+    </a>
 {{ end }}
